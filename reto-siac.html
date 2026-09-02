@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Reto SIAC — Universidad Nacional de Colombia</title>
+<meta name="description" content="Veinticuatro preguntas sobre cómo la Universidad Nacional cuida, evalúa y mejora la calidad de lo que hace. Diez minutos. Al final, un reconocimiento con tu nombre.">
+<meta name="author" content="Universidad Nacional de Colombia">
+<meta name="theme-color" content="#123B41">
+
+<!-- =========================================================================
+     ANTES DE PUBLICAR: reemplace las dos URL de ejemplo por la dirección real
+     donde quede alojada la página. Aparecen aquí abajo (og:url, og:image,
+     canonical) y una vez más en el bloque de script, en la constante URL_PUBLICO.
+     ========================================================================= -->
+<link rel="canonical" href="https://ejemplo.unal.edu.co/reto-siac/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="Educación de Calidad: UN Bien Común">
+<meta property="og:title" content="Reto SIAC — ¿Cuánto sabes de la calidad de tu Universidad?">
+<meta property="og:description" content="Veinticuatro preguntas, diez minutos y un reconocimiento con tu nombre. Aquí no se califica a nadie: cada respuesta viene con su explicación.">
+<meta property="og:url" content="https://ejemplo.unal.edu.co/reto-siac/">
+<meta property="og:image" content="https://ejemplo.unal.edu.co/reto-siac/portada.png">
+<meta property="og:image:alt" content="Reto SIAC — Universidad Nacional de Colombia">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reto SIAC — ¿Cuánto sabes de la calidad de tu Universidad?">
+<meta name="twitter:description" content="Veinticuatro preguntas, diez minutos y un reconocimiento con tu nombre.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23123B41'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23C8952A' stroke-width='3'/%3E%3Ctext x='32' y='41' font-family='Georgia,serif' font-size='24' fill='%23C8952A' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+
+<style>
+:root{
+  --tinta:#123B41; --tinta-2:#0C2A2F; --tinta-3:#1C4B52;
+  --papel:#FCFCFA; --papel-2:#F1F0EA;
+  --ocre:#B8861F; --ocre-cl:#F2E3C2;
+  --verde:#356B4D; --verde-cl:#E2EEE7;
+  --rojo:#93372A; --rojo-cl:#F6E3DE;
+  --gris:#5F6C6E; --linea:#DBDDD6;
+  --display:Georgia,'Times New Roman',serif;
+  --cuerpo:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Consolas,'Liberation Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  background:var(--papel); color:var(--tinta); font-family:var(--cuerpo);
+  font-size:17px; line-height:1.55; padding:0 20px 72px;
+  background-image:radial-gradient(circle at 1px 1px, rgba(18,59,65,.05) 1px, transparent 0);
+  background-size:22px 22px;
+}
+.wrap{max-width:690px;margin:0 auto}
+::selection{background:var(--ocre-cl)}
+
+.saltar{position:absolute;left:-9999px;background:var(--tinta);color:var(--papel);
+  padding:10px 16px;border-radius:2px;z-index:9}
+.saltar:focus{left:20px;top:12px}
+
+header{padding:40px 0 26px;border-bottom:1px solid var(--linea);margin-bottom:30px}
+.marca{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--gris);line-height:1.5}
+h1{font-family:var(--display);font-size:clamp(40px,10vw,62px);line-height:.98;
+  letter-spacing:-.022em;margin:12px 0 12px;font-weight:400}
+h1 em{font-style:normal;color:var(--ocre)}
+.bajada{color:var(--gris);font-size:17px;max-width:48ch}
+
+.sellos{display:flex;gap:13px;margin:28px 0 0;flex-wrap:wrap}
+.sello{width:76px;height:76px;border-radius:50%;flex:0 0 auto;
+  border:2px dashed var(--linea);display:grid;place-items:center;
+  color:var(--gris);font-family:var(--mono);font-size:9px;letter-spacing:.09em;
+  text-align:center;line-height:1.3}
+.sello span{display:block;font-family:var(--display);font-size:22px;letter-spacing:0;margin-bottom:1px}
+.sello.activo{border-style:solid;border-color:var(--tinta);color:var(--tinta)}
+.sello.hecho{border:2px solid var(--ocre);color:var(--ocre);background:var(--ocre-cl);
+  transform:rotate(-6deg);animation:estampar .45s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes estampar{
+  0%{transform:scale(1.8) rotate(14deg);opacity:0}
+  60%{transform:scale(.94) rotate(-8deg);opacity:1}
+  100%{transform:scale(1) rotate(-6deg);opacity:1}}
+.sello-lbl{font-size:12px;color:var(--gris);margin-top:10px;font-family:var(--mono);letter-spacing:.05em}
+
+.panel{background:#fff;border:1px solid var(--linea);border-radius:2px;padding:30px;margin-top:28px;
+  box-shadow:0 1px 0 var(--linea),0 14px 34px -28px rgba(18,59,65,.45)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--gris);display:flex;justify-content:space-between;align-items:baseline;
+  gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.eyebrow b{color:var(--tinta);font-weight:600}
+h2{font-family:var(--display);font-size:28px;line-height:1.22;font-weight:400;margin-bottom:10px}
+h3{font-family:var(--display);font-size:23px;font-weight:400;line-height:1.3;margin-bottom:20px}
+p+p{margin-top:12px}
+.sutil{color:var(--gris)}
+
+.primer{border-left:3px solid var(--ocre);background:var(--ocre-cl);padding:18px 20px;margin:22px 0 4px}
+.primer .t{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ocre);margin-bottom:8px}
+.primer p{font-size:16px}
+
+.lista-niv{margin-top:22px}
+.item{display:flex;gap:15px;padding:15px 0;border-top:1px solid var(--linea)}
+.item .n{font-family:var(--mono);font-size:12px;color:var(--ocre);flex:0 0 auto;margin-top:4px;font-weight:600}
+.item b{font-family:var(--display);font-size:19px;font-weight:400;display:block}
+.item .d{color:var(--gris);font-size:15px}
+
+.barra{height:3px;background:var(--papel-2);margin:0 0 22px;overflow:hidden}
+.barra i{display:block;height:100%;background:var(--tinta);width:0;transition:width .35s ease}
+
+.ops{display:flex;flex-direction:column;gap:9px}
+.op{display:flex;gap:13px;align-items:flex-start;width:100%;text-align:left;
+  background:#fff;border:1px solid var(--linea);border-radius:2px;padding:14px 16px;
+  font:inherit;color:inherit;cursor:pointer;transition:border-color .15s,background .15s}
+.op:hover:not(:disabled){border-color:var(--tinta);background:var(--papel-2)}
+.op:focus-visible{outline:2px solid var(--ocre);outline-offset:2px}
+.op:disabled{cursor:default}
+.op .k{font-family:var(--mono);font-size:12px;color:var(--gris);border:1px solid var(--linea);
+  border-radius:2px;width:23px;height:23px;display:grid;place-items:center;flex:0 0 auto;margin-top:2px}
+.op.ok{border-color:var(--verde);background:var(--verde-cl)}
+.op.ok .k{border-color:var(--verde);color:var(--verde);font-weight:700}
+.op.mal{border-color:var(--rojo);background:var(--rojo-cl)}
+.op.mal .k{border-color:var(--rojo);color:var(--rojo);font-weight:700}
+.op.gris{opacity:.48}
+
+.fb{margin-top:22px;padding:17px 19px;border-left:3px solid var(--tinta);background:var(--papel-2);
+  animation:entra .3s ease both}
+.fb .t{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:8px}
+.fb.ok{border-color:var(--verde)} .fb.ok .t{color:var(--verde)}
+.fb.mal{border-color:var(--rojo)} .fb.mal .t{color:var(--rojo)}
+@keyframes entra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.acciones{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{font:inherit;font-size:16px;line-height:1.4;padding:13px 26px;border-radius:2px;cursor:pointer;
+  border:1px solid var(--tinta);background:var(--tinta);color:var(--papel);transition:background .15s;
+  display:inline-block;text-align:center;text-decoration:none}
+.btn:hover{background:var(--tinta-2);color:var(--papel)}
+.btn:focus-visible{outline:2px solid var(--ocre);outline-offset:2px}
+.btn.sec{background:transparent;color:var(--tinta)}
+.btn.sec:hover{background:var(--papel-2);color:var(--tinta)}
+
+.marcador{display:flex;align-items:baseline;gap:12px;font-family:var(--display);margin:6px 0 16px}
+.marcador .n{font-size:66px;line-height:1}
+.marcador .d{font-size:21px;color:var(--gris)}
+.detalle{border-top:1px solid var(--linea);margin-top:24px;padding-top:6px;list-style:none}
+.detalle li{display:flex;gap:11px;padding:9px 0;font-size:15px;border-bottom:1px solid var(--papel-2)}
+.detalle li:last-child{border:0}
+.detalle .m{font-family:var(--mono);font-size:12px;flex:0 0 auto;margin-top:3px}
+.detalle .m.ok{color:var(--verde)} .detalle .m.mal{color:var(--rojo)}
+
+.campo{display:flex;flex-direction:column;gap:7px;margin:20px 0 4px}
+.campo label{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--gris)}
+.campo input{font:inherit;font-size:17px;padding:12px 14px;border:1px solid var(--linea);
+  border-radius:2px;background:#fff;color:inherit;width:100%}
+.campo input:focus{outline:2px solid var(--ocre);outline-offset:1px;border-color:var(--tinta)}
+.aviso{color:var(--rojo);font-size:14px;margin-top:7px}
+
+.glos{list-style:none;margin-top:8px}
+.glos li{border-top:1px solid var(--linea);padding:14px 0}
+.glos b{font-family:var(--display);font-size:18px;font-weight:400;display:block;margin-bottom:3px}
+.glos span{color:var(--gris);font-size:15px}
+
+.nota{font-size:14px;color:var(--gris);margin-top:26px;padding-top:18px;border-top:1px solid var(--linea)}
+footer{margin-top:46px;padding-top:20px;border-top:1px solid var(--linea);font-size:13px;color:var(--gris);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);letter-spacing:.03em}
+img.cred-img{width:100%;border:1px solid var(--linea);margin-top:22px;display:block}
+.oculto{display:none!important}
+
+@media (max-width:520px){
+  body{padding:0 16px 56px;font-size:16px}
+  header{padding:30px 0 22px}
+  .panel{padding:22px 18px}
+  .sello{width:64px;height:64px} .sello span{font-size:19px}
+  .marcador .n{font-size:54px}
+  .btn{width:100%}
+  .acciones{gap:9px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+  .sello.hecho{transform:none}
+}
+@media print{
+  body{background:none;padding:0}
+  header,footer,.acciones,.nota,.sellos,.sello-lbl,.saltar{display:none}
+  .panel{border:0;box-shadow:none;padding:0}
+}
+</style>
+</head>
+<body>
+<a class="saltar" href="#app">Saltar al reto</a>
+<div class="wrap">
+
+<header>
+  <p class="marca">Universidad Nacional de Colombia<br>Educación de Calidad: UN Bien Común</p>
+  <h1>Reto <em>SIAC</em></h1>
+  <p class="bajada">Veinticuatro preguntas sobre cómo la Universidad cuida, evalúa y mejora la calidad de lo que hace. Diez minutos. Al final, un reconocimiento con tu nombre.</p>
+  <div class="sellos" id="sellos" role="img" aria-label="Avance por niveles"></div>
+  <p class="sello-lbl" id="selloLbl">Ningún nivel superado todavía</p>
+</header>
+
+<main id="app" aria-live="polite"></main>
+
+<footer>
+  <span>Educación de Calidad: UN Bien Común</span>
+  <span id="folio"></span>
+</footer>
+</div>
+
+<script>
+"use strict";
+
+/* Reemplace por la dirección real donde quede publicada la página.
+   Se usa en el botón de compartir. */
+const URL_PUBLICO = "https://ejemplo.unal.edu.co/reto-siac/";
+
+const APROBAR = 6;
+
+const NIVELES = {
+  1:{ r:"I",   t:"Fundamentos",
+      d:"Qué es el SIAC, de qué se ocupa y quiénes lo sostienen." },
+  2:{ r:"II",  t:"Ciclo y componentes",
+      d:"Cómo se evalúa, cómo se decide y cómo se demuestra que algo mejoró." },
+  3:{ r:"III", t:"Participación y diálogo",
+      d:"Qué separa participar de opinar, y por qué esa diferencia cambia el resultado." }
+};
+
+const PREGUNTAS = [
+/* ---------------------------------------------------- NIVEL I */
+{n:1, q:"El SIAC es, ante todo:",
+ o:["Una oficina encargada de los trámites de acreditación",
+    "Un sistema que articula políticas, procesos, actores e información para asegurar la calidad",
+    "Un formato que se diligencia antes de la visita de pares",
+    "Un requisito del Ministerio que se cumple cada siete años"],
+ c:1,
+ f:"El SIAC no cabe en una dependencia ni en un trámite. Es la manera en que la Universidad entera sostiene su calidad todos los días, no solo cuando alguien viene a revisarla."},
+
+{n:1, q:"La responsabilidad sobre la calidad recae principalmente en:",
+ o:["Las directivas y las oficinas de planeación",
+    "Los docentes de cada programa",
+    "Toda la comunidad universitaria, cada quien desde su rol",
+    "Los pares académicos que evalúan"],
+ c:2,
+ f:"A esto se le llama corresponsabilidad. Quien responde una encuesta con seriedad, quien registra bien un dato, quien reporta una falla: todos están asegurando calidad, aunque nadie lo llame así."},
+
+{n:1, q:"La autoevaluación se define mejor como:",
+ o:["Un informe que se redacta para la visita externa",
+    "Una encuesta de satisfacción aplicada a estudiantes",
+    "Un proceso participativo y sistemático de examen del propio desempeño frente a referentes de calidad",
+    "Una auditoría realizada por un evaluador independiente"],
+ c:2,
+ f:"Lo que la vuelve autoevaluación es que la comunidad se examina a sí misma, con método y con evidencia. El documento es el resultado, no el propósito."},
+
+{n:1, q:"¿Cuál es la diferencia entre registro calificado y acreditación de alta calidad?",
+ o:["El primero es obligatorio y verifica mínimos; la segunda es voluntaria y reconoce niveles superiores",
+    "El primero lo otorga la Universidad y la segunda el Estado",
+    "Son sinónimos que se usan en momentos distintos del ciclo",
+    "El primero aplica a programas y la segunda solo a instituciones"],
+ c:0,
+ f:"El registro calificado habilita a un programa para funcionar. La acreditación reconoce, además, un desempeño sostenido por encima de esos mínimos. Se solicita de manera voluntaria, pero sostenerla exige bastante."},
+
+{n:1, q:"«La calidad se asegura durante los meses previos a la visita de pares.»",
+ o:["Verdadero: es cuando se concentra el trabajo",
+    "Falso: el aseguramiento es permanente y la visita solo verifica lo ya construido"],
+ c:1,
+ f:"Cuando todo el esfuerzo se acumula antes de la visita, lo que se produce es un documento. Cuando el trabajo es permanente, lo que se produce es calidad — y el documento sale casi solo."},
+
+{n:1, q:"Hay un actor del SIAC que aporta una mirada que nadie más tiene y que suele quedar por fuera de las convocatorias. ¿Cuál?",
+ o:["El personal administrativo","Los egresados","Los estudiantes de primeros semestres","Los docentes ocasionales"],
+ c:1,
+ f:"Solo un egresado puede decir si lo que prometía el programa se cumple en el ejercicio profesional. Ningún otro actor responde esa pregunta, y por eso su ausencia deja un vacío que no se llena con más encuestas internas."},
+
+{n:1, q:"La autorregulación consiste en:",
+ o:["Cumplir estrictamente lo que exige la norma externa",
+    "Fijarse estándares propios y controlarlos por iniciativa interna",
+    "Delegar el control de calidad en un ente independiente",
+    "Ajustar los indicadores para que la meta siempre se alcance"],
+ c:1,
+ f:"Una institución autorregulada no espera que alguien de afuera le señale el problema: se fija su propia vara, a veces más alta que la exigida, y la sostiene."},
+
+{n:1, q:"¿Cómo se reconoce que existe cultura de calidad en una dependencia?",
+ o:["Tiene un manual de calidad actualizado",
+    "Evaluar y mejorar es parte del trabajo cotidiano, no un evento excepcional",
+    "Todos sus programas están acreditados",
+    "Superó la última visita de pares sin observaciones"],
+ c:1,
+ f:"La señal más honesta es esta: cuando empieza una autoevaluación, nadie pregunta para qué sirve. Eso no se logra con un manual; se logra con años de hacerlo bien."},
+
+/* ---------------------------------------------------- NIVEL II */
+{n:2, q:"¿Cuál es el orden del ciclo de mejoramiento?",
+ o:["Plan de mejoramiento, autoevaluación, seguimiento, implementación",
+    "Autoevaluación, plan de mejoramiento, implementación, seguimiento y de nuevo autoevaluación",
+    "Seguimiento, autoevaluación, implementación, plan de mejoramiento",
+    "Implementación, autoevaluación, plan de mejoramiento, seguimiento"],
+ c:1,
+ f:"Es un ciclo, no una lista. El seguimiento no lo cierra: lo reinicia, porque sus hallazgos son el punto de partida de la siguiente autoevaluación."},
+
+{n:2, q:"Una acción de un plan de mejoramiento está bien formulada cuando tiene:",
+ o:["Una descripción detallada del problema",
+    "Responsable, meta, recurso, indicador y fecha",
+    "El respaldo del consejo correspondiente",
+    "Al menos tres dependencias involucradas"],
+ c:1,
+ f:"Sin responsable y sin fecha no hay acción: hay intención. Y una intención no se le puede hacer seguimiento seis meses después."},
+
+{n:2, q:"Un indicador sirve para el SIAC cuando:",
+ o:["Muestra siempre una tendencia favorable",
+    "Es fácil de recolectar con los datos que ya existen",
+    "Es medible, pertinente y tiene línea base y meta",
+    "Coincide con el que reportan otras universidades"],
+ c:2,
+ f:"Sin línea base no se puede afirmar que algo mejoró: solo que hay un número. La comparación que importa es la de un indicador consigo mismo, año tras año."},
+
+{n:2, q:"¿Cuál de estas afirmaciones es evidencia y no percepción?",
+ o:["Los estudiantes se sienten acompañados por sus docentes",
+    "El 78 % de la cohorte asistió al menos a una tutoría",
+    "El ambiente del programa mejoró bastante este año",
+    "Existe la voluntad institucional de fortalecer el acompañamiento"],
+ c:1,
+ f:"La percepción es un dato valioso y también se recoge. Lo que no se puede es presentarla como resultado: se registra como percepción medida, con su método y su tamaño de muestra."},
+
+{n:2, q:"El componente de información del SIAC busca sobre todo:",
+ o:["Cumplir con los reportes que exige el Ministerio",
+    "Garantizar datos confiables, oportunos y comparables para decidir",
+    "Centralizar todos los documentos en un repositorio único",
+    "Automatizar la elaboración de los informes de autoevaluación"],
+ c:1,
+ f:"Si dos dependencias reportan cifras distintas del mismo hecho, el problema casi nunca es de software: es que todavía no hay acuerdo sobre qué se está midiendo."},
+
+{n:2, q:"En una universidad con varias sedes, el desafío del aseguramiento consiste en:",
+ o:["Aplicar procedimientos idénticos en todas",
+    "Permitir que cada sede defina sus propios estándares",
+    "Sostener estándares comunes reconociendo las particularidades de cada territorio",
+    "Concentrar la evaluación en la sede principal"],
+ c:2,
+ f:"Ni uniformidad ni dispersión. El mismo estándar, leído desde el contexto de cada sede. Ese equilibrio es justamente lo que se evalúa en la acreditación institucional."},
+
+{n:2, q:"¿Qué hacen los pares académicos durante una visita?",
+ o:["Descubrir problemas que la institución desconoce",
+    "Contrastar en sitio lo que la institución ya documentó sobre sí misma",
+    "Elaborar el plan de mejoramiento de la institución",
+    "Definir los indicadores que la institución debe reportar"],
+ c:1,
+ f:"Una visita de pares no debería traer sorpresas. Si las trae, el problema apareció mucho antes: en una autoevaluación que no miró donde debía."},
+
+{n:2, q:"Un plan de mejoramiento que se formula pero nunca se somete a seguimiento produce:",
+ o:["Un avance parcial que de todos modos suma",
+    "Una ruptura del ciclo: sin seguimiento no hay evidencia de mejora ni insumo para la siguiente evaluación",
+    "Un incumplimiento formal ante el ente evaluador",
+    "Un retraso que se corrige en la próxima autoevaluación"],
+ c:1,
+ f:"El seguimiento es lo que convierte una lista de tareas en mejoramiento demostrable. Sin él, cada ciclo vuelve a empezar de cero y nadie sabe qué funcionó."},
+
+/* ---------------------------------------------------- NIVEL III */
+{n:3, q:"¿Qué distingue la participación de la simple consulta?",
+ o:["Que involucra a más personas",
+    "Que incide de verdad en la decisión y que ese resultado se devuelve",
+    "Que se realiza en espacios presenciales",
+    "Que está regulada por un acto administrativo"],
+ c:1,
+ f:"El criterio no es cuánta gente opina, sino si esa opinión cambió algo y si alguien se tomó el trabajo de contarlo de vuelta. Sin lo segundo, la próxima vez responde la mitad."},
+
+{n:3, q:"Ordenados de menor a mayor incidencia, los niveles de participación son:",
+ o:["Consultar, informar, decidir, deliberar",
+    "Informar, consultar, deliberar, decidir y corresponsabilizarse",
+    "Deliberar, informar, consultar, decidir",
+    "Informar, decidir, consultar, deliberar"],
+ c:1,
+ f:"Informar es el piso, no la meta. Un ejercicio que se queda ahí puede ser perfectamente necesario — lo que no puede es presentarse como participación."},
+
+{n:3, q:"¿En qué momento del ciclo de calidad debe participar la comunidad universitaria?",
+ o:["Cuando se recolecta la información",
+    "Al final, cuando se socializan los resultados",
+    "En todo el ciclo: en la definición, la evaluación, las decisiones y el seguimiento",
+    "Cuando lo solicite el ente evaluador externo"],
+ c:2,
+ f:"Limitar la participación a la recolección convierte a la comunidad en fuente de datos. Participar es también decidir qué se pregunta y qué se hace con la respuesta."},
+
+{n:3, q:"¿Por qué importa devolver los resultados a quienes participaron?",
+ o:["Porque lo exige la transparencia institucional",
+    "Porque cierra el ciclo de participación y sostiene la confianza para la próxima convocatoria",
+    "Porque permite corregir errores en la información recolectada",
+    "Porque es un insumo obligatorio del informe de autoevaluación"],
+ c:1,
+ f:"Hay una razón muy práctica detrás del principio: la confianza es un recurso que se gasta. Cada convocatoria sin devolución le resta respuesta a la siguiente."},
+
+{n:3, q:"¿Cuál suele ser la mayor barrera para que la gente participe en procesos de calidad?",
+ o:["La falta de canales de comunicación",
+    "La sensación de que participar no cambia nada",
+    "El desconocimiento de la normativa vigente",
+    "La ausencia de incentivos económicos"],
+ c:1,
+ f:"Contra esa sensación no sirve una campaña: sirve mostrar una decisión concreta que cambió porque alguien la propuso. Un ejemplo real convence más que diez invitaciones."},
+
+{n:3, q:"Una autoevaluación gana legitimidad ante la comunidad cuando:",
+ o:["La firma la máxima autoridad académica",
+    "Combina participación amplia, evidencia verificable y devolución de resultados",
+    "Recibe una calificación favorable de los pares",
+    "Se entrega dentro de los plazos establecidos"],
+ c:1,
+ f:"Legitimidad y solidez técnica no son lo mismo. Un informe impecable que nadie reconoce como propio no alcanza a cambiar una sola práctica."},
+
+{n:3, q:"¿Qué aporta un egresado que ningún otro actor puede aportar?",
+ o:["Vínculos institucionales con el sector productivo",
+    "La única evidencia sobre si el perfil de egreso se cumple en el ejercicio profesional real",
+    "Recursos para financiar los planes de mejoramiento",
+    "Representación de la institución ante organismos externos"],
+ c:1,
+ f:"Es la prueba de fuego de todo programa: qué pasó con quienes ya salieron. Y solo ellos pueden contestarla."},
+
+{n:3, q:"Una mesa de diálogo se diferencia de una socialización en que:",
+ o:["Se hace con grupos más pequeños",
+    "Los participantes deliberan y construyen acuerdos, en vez de recibir información ya definida",
+    "Requiere moderación profesional",
+    "Queda registrada en un acta formal"],
+ c:1,
+ f:"La prueba está en la agenda, no en el discurso de apertura. Si nada puede cambiar por lo que allí se diga, es una socialización — y llamarla diálogo desgasta la palabra."}
+];
+
+const GLOSARIO = [
+ ["SIAC","Sistema Interno de Aseguramiento de la Calidad: el conjunto articulado de políticas, procesos, actores e información con que la Universidad planea, evalúa y mejora la calidad de sus funciones misionales."],
+ ["Aseguramiento de la calidad","Los mecanismos permanentes que garantizan que lo que la Universidad promete en docencia, investigación y extensión efectivamente ocurre — y mejora."],
+ ["Autoevaluación","El proceso participativo con que un programa, una sede o la institución examina su propio desempeño frente a referentes de calidad y produce evidencia sobre él."],
+ ["Autorregulación","La capacidad de fijarse estándares propios y controlarlos por iniciativa interna, sin esperar la exigencia de un ente externo."],
+ ["Mejoramiento continuo","La lógica cíclica en la que cada evaluación produce acciones, cada acción produce seguimiento y cada seguimiento alimenta la siguiente evaluación."],
+ ["Plan de mejoramiento","Las acciones priorizadas que salen de la autoevaluación, cada una con responsable, meta, recurso, indicador y fecha."],
+ ["Registro calificado","La autorización estatal obligatoria que habilita a un programa académico para ofrecerse. Verifica condiciones mínimas de calidad."],
+ ["Acreditación de alta calidad","El reconocimiento público y voluntario que certifica que un programa o una institución supera de manera sostenida esos mínimos."],
+ ["Condiciones de calidad","Los aspectos verificables que todo programa debe demostrar: desde el proyecto educativo hasta el personal docente, los medios y la infraestructura."],
+ ["Pares académicos","Los evaluadores externos que contrastan en sitio lo que la institución afirma en su documento de autoevaluación."],
+ ["Indicador","La medida que permite observar en el tiempo el comportamiento de un aspecto de la calidad. Necesita definición, línea base, meta y responsable."],
+ ["Línea base","El valor de partida de un indicador antes de aplicar una acción de mejora. Sin ella no se puede afirmar que hubo mejoramiento."],
+ ["Evidencia","El dato, documento o registro verificable que respalda una afirmación sobre la calidad. No es lo mismo que la percepción ni que la opinión."],
+ ["Sistema de información","El soporte que garantiza datos confiables, oportunos y comparables para decidir."],
+ ["Participación","La intervención de la comunidad en las decisiones sobre la calidad, con capacidad real de incidir en ellas y no solo de opinar."],
+ ["Diálogo","El espacio deliberativo donde actores con posiciones distintas construyen acuerdos sobre qué significa calidad y cómo alcanzarla."],
+ ["Devolución de resultados","El momento en que la institución regresa a la comunidad lo que hizo con lo que esta aportó. Cierra el ciclo y sostiene la confianza."],
+ ["Corresponsabilidad","El reconocimiento de que la calidad no la produce una dependencia, sino cada actor desde su rol cotidiano."],
+ ["Cultura de calidad","El punto en que evaluar y mejorar dejan de ser un evento excepcional y se vuelven un hábito de trabajo."],
+ ["Multicampus","La condición de una universidad que opera en varias sedes y debe sostener estándares comunes reconociendo cada territorio."]
+];
+
+/* ------------------------------------------------------------------ estado */
+const S = { nivel:1, i:0, resp:null, aciertos:0, historia:[], superados:[], puntajes:{} };
+const app  = document.getElementById('app');
+const $    = s => document.querySelector(s);
+const esc  = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nivel = n => PREGUNTAS.filter(p => p.n === n);
+const FOLIO = Math.random().toString(36).slice(2,8).toUpperCase();
+document.getElementById('folio').textContent = 'FOLIO ' + FOLIO;
+
+function sube(){ window.scrollTo({ top:0, behavior:'smooth' }); }
+
+function pintarSellos(){
+  document.getElementById('sellos').innerHTML = [1,2,3].map(n=>{
+    const cls = S.superados.includes(n) ? 'hecho' : (n===S.nivel ? 'activo' : '');
+    const et  = S.superados.includes(n) ? 'SUPERADO' : 'NIVEL';
+    return `<div class="sello ${cls}"><div><span>${NIVELES[n].r}</span>${et}</div></div>`;
+  }).join('');
+  const k = S.superados.length;
+  document.getElementById('selloLbl').textContent =
+    k===0 ? 'Ningún nivel superado todavía' :
+    k===3 ? 'Los tres niveles superados' :
+    k===1 ? '1 de 3 niveles superados' : `${k} de 3 niveles superados`;
+}
+
+/* ------------------------------------------------------------------ portada */
+function portada(){
+  app.innerHTML = `
+  <section class="panel">
+    <div class="eyebrow"><span>Cómo funciona</span><span>24 preguntas · unos 10 min</span></div>
+    <h2>Aquí no se califica a nadie.</h2>
+    <p class="sutil">Cada respuesta viene con su explicación, se acierte o no, y esa explicación es lo que vale la pena llevarse. El puntaje solo marca el ritmo: hacen falta ${APROBAR} aciertos de 8 para pasar de nivel, y se puede repetir sin límite.</p>
+
+    <div class="primer">
+      <p class="t">Si es la primera vez que lees la sigla</p>
+      <p>El <b>SIAC</b> es el Sistema Interno de Aseguramiento de la Calidad: la forma en que la Universidad Nacional revisa si lo que promete en sus aulas, laboratorios y proyectos efectivamente ocurre, y qué hace cuando no ocurre. No es una oficina ni un trámite. Depende de lo que hacen a diario estudiantes, docentes, personal administrativo y egresados.</p>
+    </div>
+
+    <div class="lista-niv">
+      ${[1,2,3].map(n=>`
+        <div class="item">
+          <div class="n">0${n}</div>
+          <div><b>${esc(NIVELES[n].t)}</b><div class="d">${esc(NIVELES[n].d)}</div></div>
+        </div>`).join('')}
+    </div>
+
+    <div class="acciones"><button class="btn" id="ir">Empezar por el nivel I</button></div>
+    <p class="nota">El reto se resuelve en esta misma pestaña y nada se envía a ningún servidor. Si la cierras a mitad de camino, hay que volver a empezar.</p>
+  </section>`;
+  $('#ir').addEventListener('click', ()=> iniciarNivel(1));
+}
+
+/* ------------------------------------------------------------------ juego */
+function iniciarNivel(n){
+  S.nivel=n; S.i=0; S.aciertos=0; S.resp=null; S.historia=[];
+  pintarSellos(); pregunta(); sube();
+}
+
+function pregunta(){
+  const set = nivel(S.nivel), p = set[S.i];
+  app.innerHTML = `
+  <section class="panel">
+    <div class="eyebrow">
+      <span>Nivel ${NIVELES[S.nivel].r} · <b>${esc(NIVELES[S.nivel].t)}</b></span>
+      <span>Pregunta ${S.i+1} de ${set.length}</span>
+    </div>
+    <div class="barra"><i style="width:${(S.i/set.length)*100}%"></i></div>
+    <h3>${esc(p.q)}</h3>
+    <div class="ops" role="group" aria-label="Opciones de respuesta">
+      ${p.o.map((o,k)=>`<button class="op" data-k="${k}">
+        <span class="k" aria-hidden="true">${'ABCD'[k]}</span><span>${esc(o)}</span></button>`).join('')}
+    </div>
+    <div id="fb"></div>
+  </section>`;
+  document.querySelectorAll('.op').forEach(b =>
+    b.addEventListener('click', ()=> responder(+b.dataset.k)));
+}
+
+function responder(k){
+  if(S.resp!==null) return;
+  S.resp = k;
+  const set = nivel(S.nivel), p = set[S.i], ok = (k===p.c);
+  if(ok) S.aciertos++;
+  S.historia.push({ q:p.q, ok });
+
+  document.querySelectorAll('.op').forEach(b=>{
+    const j = +b.dataset.k;
+    b.disabled = true;
+    if(j===p.c) b.classList.add('ok');
+    else if(j===k) b.classList.add('mal');
+    else b.classList.add('gris');
+  });
+
+  const ultima = (S.i === set.length-1);
+  $('#fb').innerHTML = `
+    <div class="fb ${ok?'ok':'mal'}">
+      <div class="t">${ok?'Correcto':'No era esa'}</div>
+      <div>${esc(p.f)}</div>
+    </div>
+    <div class="acciones">
+      <button class="btn" id="sig">${ultima?'Ver cómo te fue':'Siguiente pregunta'}</button>
+    </div>`;
+  const b = $('#sig');
+  b.addEventListener('click', siguiente);
+  b.focus();
+}
+
+function siguiente(){
+  const set = nivel(S.nivel);
+  S.resp = null;
+  if(S.i < set.length-1){ S.i++; pregunta(); }
+  else resultado();
+}
+
+/* ------------------------------------------------------------------ cierre de nivel */
+function resultado(){
+  const set = nivel(S.nivel), paso = S.aciertos >= APROBAR, ultimo = (S.nivel===3);
+  S.puntajes[S.nivel] = S.aciertos;
+  if(paso && !S.superados.includes(S.nivel)) S.superados.push(S.nivel);
+  pintarSellos();
+
+  let mensaje;
+  if(paso && ultimo)      mensaje = "Los tres niveles quedan superados. Lo que sigue no es un puntaje: es el reconocimiento.";
+  else if(paso && S.aciertos===8) mensaje = "Nivel superado sin una sola falla. El siguiente exige menos definiciones y más criterio.";
+  else if(paso)           mensaje = "Nivel superado. El siguiente sube la exigencia: menos definiciones y más decisiones.";
+  else                    mensaje = `Faltaron ${APROBAR - S.aciertos} para pasar. Vale la pena releer las explicaciones de las que fallaste antes de intentarlo otra vez — nadie lleva la cuenta de los intentos.`;
+
+  const botones = paso
+    ? (ultimo
+        ? `<button class="btn" id="a1">Reclamar el reconocimiento</button>`
+        : `<button class="btn" id="a1">Seguir al nivel ${NIVELES[S.nivel+1].r}</button>
+           <button class="btn sec" id="a2">Repetir este nivel</button>`)
+    : `<button class="btn" id="a1">Intentar de nuevo</button>`;
+
+  app.innerHTML = `
+  <section class="panel">
+    <div class="eyebrow">
+      <span>Nivel ${NIVELES[S.nivel].r} · ${esc(NIVELES[S.nivel].t)}</span>
+      <span>${paso?'Superado':'No superado'}</span>
+    </div>
+    <div class="marcador"><span class="n">${S.aciertos}</span><span class="d">de ${set.length} correctas</span></div>
+    <p class="sutil">${esc(mensaje)}</p>
+    <ul class="detalle">
+      ${S.historia.map(h=>`<li><span class="m ${h.ok?'ok':'mal'}" aria-hidden="true">${h.ok?'✓':'✕'}</span>
+        <span><span class="oculto">${h.ok?'Correcta: ':'Fallada: '}</span>${esc(h.q)}</span></li>`).join('')}
+    </ul>
+    <div class="acciones">${botones}</div>
+  </section>`;
+
+  const a1 = $('#a1'), a2 = $('#a2');
+  if(paso && ultimo) a1.addEventListener('click', credencial);
+  else if(paso){
+    a1.addEventListener('click', ()=> iniciarNivel(S.nivel+1));
+    a2.addEventListener('click', ()=> iniciarNivel(S.nivel));
+  } else a1.addEventListener('click', ()=> iniciarNivel(S.nivel));
+  sube();
+}
+
+/* ------------------------------------------------------------------ credencial */
+function credencial(){
+  const total = Object.values(S.puntajes).reduce((a,b)=>a+b,0);
+  app.innerHTML = `
+  <section class="panel">
+    <div class="eyebrow"><span>Reconocimiento</span><span>${total} de 24 correctas</span></div>
+    <h2>Embajador SIAC</h2>
+    <p class="sutil">Escribe tu nombre como quieres que aparezca. El reconocimiento se arma aquí mismo, en tu equipo: no se envía ni se guarda nada.</p>
+    <div class="campo">
+      <label for="nom">Nombre completo</label>
+      <input id="nom" type="text" maxlength="46" placeholder="Tu nombre" autocomplete="name" enterkeyhint="done">
+      <div class="aviso oculto" id="err">Escribe un nombre para generar el reconocimiento.</div>
+    </div>
+    <div class="campo">
+      <label for="dep">Sede o dependencia <span style="text-transform:none;letter-spacing:0">(opcional)</span></label>
+      <input id="dep" type="text" maxlength="46" placeholder="Ej.: Sede Bogotá — Facultad de Ingeniería">
+    </div>
+    <div class="acciones">
+      <button class="btn" id="gen">Generar reconocimiento</button>
+      <button class="btn sec" id="rep">Volver a empezar</button>
+    </div>
+    <div id="salida"></div>
+  </section>
+
+  <section class="panel">
+    <div class="eyebrow"><span>Para tener a mano</span><span>20 términos</span></div>
+    <h2>Lo que aparece en el reto, en una sola página</h2>
+    <p class="sutil">Sirve para repasar antes de un segundo intento, o para consultar cuando alguna de estas palabras aparezca en una reunión.</p>
+    <ul class="glos">
+      ${GLOSARIO.map(([t,d])=>`<li><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join('')}
+    </ul>
+  </section>`;
+
+  $('#gen').addEventListener('click', generar);
+  $('#rep').addEventListener('click', reiniciar);
+  $('#nom').addEventListener('keydown', e => { if(e.key==='Enter') generar(); });
+  $('#nom').focus();
+  sube();
+}
+
+function generar(){
+  const nom = ($('#nom').value || '').trim();
+  const err = $('#err');
+  if(!nom){ err.classList.remove('oculto'); $('#nom').focus(); return; }
+  err.classList.add('oculto');
+
+  const dep   = ($('#dep').value || '').trim();
+  const total = Object.values(S.puntajes).reduce((a,b)=>a+b,0);
+  const fecha = new Date().toLocaleDateString('es-CO',{ day:'2-digit', month:'long', year:'numeric' });
+
+  const W=1200, H=750, c=document.createElement('canvas');
+  c.width=W; c.height=H;
+  const x = c.getContext('2d');
+  const TINTA='#123B41', OCRE='#B8861F', GRIS='#5F6C6E';
+
+  x.fillStyle='#FCFCFA'; x.fillRect(0,0,W,H);
+  x.strokeStyle=TINTA; x.lineWidth=6; x.strokeRect(26,26,W-52,H-52);
+  x.strokeStyle=OCRE;  x.lineWidth=1.5; x.strokeRect(42,42,W-84,H-84);
+
+  const cen = (t,y,f,col,sp)=>{
+    x.font=f; x.fillStyle=col; x.textAlign='center';
+    if(sp){
+      const chs=[...t]; const w=chs.reduce((a,ch)=>a+x.measureText(ch).width+sp,0)-sp;
+      let px=W/2-w/2; x.textAlign='left';
+      chs.forEach(ch=>{ x.fillText(ch,px,y); px+=x.measureText(ch).width+sp; });
+    } else x.fillText(t,W/2,y);
+  };
+
+  cen('UNIVERSIDAD NACIONAL DE COLOMBIA',108,'600 17px Consolas, monospace',GRIS,3.4);
+  cen('Educación de Calidad: UN Bien Común',146,'19px Georgia, serif',GRIS);
+  x.strokeStyle='#DBDDD6'; x.lineWidth=1;
+  x.beginPath(); x.moveTo(300,182); x.lineTo(W-300,182); x.stroke();
+
+  cen('SE RECONOCE COMO',232,'600 15px Consolas, monospace',GRIS,3.2);
+  cen('Embajador SIAC',312,'72px Georgia, serif',TINTA);
+  cen('a',360,'italic 22px Georgia, serif',GRIS);
+
+  let fs=54; x.font=`${fs}px Georgia, serif`;
+  while(x.measureText(nom).width > W-260 && fs>22){ fs-=2; x.font=`${fs}px Georgia, serif`; }
+  cen(nom,424,`${fs}px Georgia, serif`,OCRE);
+  const wn = x.measureText(nom).width;
+  x.strokeStyle=OCRE; x.lineWidth=1;
+  x.beginPath(); x.moveTo(W/2-wn/2,444); x.lineTo(W/2+wn/2,444); x.stroke();
+  if(dep) cen(dep,478,'20px Georgia, serif',GRIS);
+
+  const yb = dep ? 528 : 512;
+  cen('por completar los tres niveles del Reto SIAC y demostrar apropiación', yb,   '19px Georgia, serif',TINTA);
+  cen('del Sistema Interno de Aseguramiento de la Calidad',                   yb+28,'19px Georgia, serif',TINTA);
+
+  const cy=636;
+  ['I','II','III'].forEach((r,i)=>{
+    const cx = W/2 + (i-1)*104;
+    x.beginPath(); x.arc(cx,cy,38,0,Math.PI*2);
+    x.fillStyle='#F2E3C2'; x.fill();
+    x.strokeStyle=OCRE; x.lineWidth=2.5; x.stroke();
+    x.fillStyle=OCRE; x.textAlign='center';
+    x.font='26px Georgia, serif';        x.fillText(r,cx,cy+3);
+    x.font='600 9px Consolas, monospace';x.fillText('SUPERADO',cx,cy+22);
+  });
+
+  x.fillStyle=GRIS; x.font='600 13px Consolas, monospace';
+  x.textAlign='left';  x.fillText(`FOLIO ${FOLIO}`, 64, H-52);
+  x.textAlign='right'; x.fillText(`${total}/24 · ${fecha.toUpperCase()}`, W-64, H-52);
+
+  const url = c.toDataURL('image/png');
+  $('#salida').innerHTML = `
+    <img class="cred-img" src="${url}" alt="Reconocimiento como Embajador SIAC a nombre de ${esc(nom)}">
+    <div class="acciones">
+      <a class="btn" download="Reconocimiento-Embajador-SIAC.png" href="${url}">Descargar imagen</a>
+      <button class="btn sec" id="comp">Compartir el reto</button>
+      <button class="btn sec" id="otro">Cambiar el nombre</button>
+    </div>
+    <p class="nota">Comparte el reconocimiento y reta a alguien de tu facultad o dependencia. Esto se contagia por invitación, no por circular.</p>`;
+  $('#otro').addEventListener('click', generar);
+  $('#comp').addEventListener('click', compartir);
+}
+
+function compartir(e){
+  const btn  = e.currentTarget;
+  const url  = (URL_PUBLICO.includes('ejemplo.unal.edu.co') ? location.href : URL_PUBLICO);
+  const txt  = 'Acabo de completar el Reto SIAC de la Universidad Nacional: 24 preguntas y 10 minutos para entender cómo se cuida la calidad de lo que hacemos.';
+  if(navigator.share){
+    navigator.share({ title:'Reto SIAC', text:txt, url }).catch(()=>{});
+  } else if(navigator.clipboard){
+    navigator.clipboard.writeText(`${txt} ${url}`).then(()=>{
+      const o = btn.textContent; btn.textContent = 'Enlace copiado';
+      setTimeout(()=>{ btn.textContent = o; }, 2200);
+    }).catch(()=>{});
+  }
+}
+
+function reiniciar(){
+  S.nivel=1; S.i=0; S.aciertos=0; S.resp=null;
+  S.historia=[]; S.superados=[]; S.puntajes={};
+  pintarSellos(); portada(); sube();
+}
+
+pintarSellos();
+portada();
+</script>
+</body>
+</html>
